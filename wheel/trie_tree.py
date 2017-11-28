@@ -5,6 +5,8 @@
 # @File    : trie_tree.py
 
 
+import sys
+
 class Node:
     def __init__(self):
         # self.value = None
@@ -71,15 +73,15 @@ class Trie_tree:
             self.root.times -= 1
             return 1
 
-    # def display_node(self,node):
-    #     output_result = ''
-    #     if len(node.children) == 0:
-    #         print node.value
-    #     else:
-    #         if node.times != 0:
-    #             print node.value
-    #         for key in node.children.keys():
-    #             self.display_node(node.children[key])
+    def display_node(self,node):
+        output_result = ''
+        if len(node.children) == 0:
+            print node.value
+        else:
+            if node.times != 0:
+                print node.value
+            for key in node.children.keys():
+                self.display_node(node.children[key])
 
     def display(self,node,value):
         if len(node.children) == 0:
@@ -95,7 +97,9 @@ def test():
     trie.insert("qihoo")
     trie.insert("lenovo")
     trie.insert("qiguai")
+    trie.display(trie.root,"\t")
 
+    sys.exit(0)
     print
     print '###test###'
     print trie.search("qiq")
@@ -117,6 +121,7 @@ def test():
     print trie.delete('qihoo')
     print trie.search('qihooa')
     print trie.search('qihoo')
+
 
 if __name__ == "__main__":
     test()
